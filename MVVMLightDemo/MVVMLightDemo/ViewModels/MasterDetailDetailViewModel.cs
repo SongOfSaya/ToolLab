@@ -1,19 +1,18 @@
-using System;
+﻿using System;
 using System.Windows.Input;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using MvvmLightDemo.Models;
-using MvvmLightDemo.Services;
+using MVVMLightDemo.Models;
+using MVVMLightDemo.Services;
 
 using Windows.UI.Xaml;
 
-namespace MvvmLightDemo.ViewModels
+namespace MVVMLightDemo.ViewModels
 {
     public class MasterDetailDetailViewModel : ViewModelBase
     {
-
         public NavigationServiceEx NavigationService
         {
             get
@@ -21,12 +20,15 @@ namespace MvvmLightDemo.ViewModels
                 return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
             }
         }
-        const string NarrowStateName = "NarrowState";
-        const string WideStateName = "WideState";
+
+        private const string NarrowStateName = "NarrowState";
+
+        private const string WideStateName = "WideState";
 
         public ICommand StateChangedCommand { get; private set; }
 
         private Order _item;
+
         public Order Item
         {
             get { return _item; }
@@ -37,7 +39,7 @@ namespace MvvmLightDemo.ViewModels
         {
             StateChangedCommand = new RelayCommand<VisualStateChangedEventArgs>(OnStateChanged);
         }
-        
+
         private void OnStateChanged(VisualStateChangedEventArgs args)
         {
             if (args.OldState.Name == NarrowStateName && args.NewState.Name == WideStateName)

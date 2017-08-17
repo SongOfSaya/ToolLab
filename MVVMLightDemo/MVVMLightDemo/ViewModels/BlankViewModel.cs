@@ -4,9 +4,9 @@ using GalaSoft.MvvmLight;
 
 namespace MVVMLightDemo.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class BlankViewModel : ViewModelBase
     {
-        public MainViewModel()
+        public BlankViewModel()
         {
         }
     }

@@ -8,14 +8,14 @@
   IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="178D7FE3-BA31-459A-B7A1-E4C12537B23B"
+    Name="645CE396-3B92-49AA-8EDE-85E9693E14CA"
     Publisher="CN=liute"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="178D7FE3-BA31-459A-B7A1-E4C12537B23B" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="645CE396-3B92-49AA-8EDE-85E9693E14CA" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MvvmLightDemo</DisplayName>
+    <DisplayName>MVVMLightDemo</DisplayName>
     <PublisherDisplayName>liute</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -31,12 +31,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MvvmLightDemo.App">
+      EntryPoint="MVVMLightDemo.App">
       <uap:VisualElements
-        DisplayName="MvvmLightDemo"
+        DisplayName="MVVMLightDemo"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MvvmLightDemo"
+        Description="MVVMLightDemo"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
@@ -50,8 +50,8 @@
 
   <genTemplate:Metadata>
     <genTemplate:Item Name="generator" Value="Windows Template Studio"/>
-    <genTemplate:Item Name="wizardVersion" Version="1.2.17198.1" />
-    <genTemplate:Item Name="templatesVersion" Version="1.2.17202.1" />
+    <genTemplate:Item Name="wizardVersion" Version="0.14.17207.65001" />
+    <genTemplate:Item Name="templatesVersion" Version="0.14.17222.2" />
     <genTemplate:Item Name="projectType" Value="SplitView" />
     <genTemplate:Item Name="framework" Value="MVVMLight" />
   </genTemplate:Metadata>

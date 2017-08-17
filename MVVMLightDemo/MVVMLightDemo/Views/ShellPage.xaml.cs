@@ -1,14 +1,19 @@
-using MvvmLightDemo.Services;
-using MvvmLightDemo.ViewModels;
+﻿using System;
+
+using MVVMLightDemo.Services;
+using MVVMLightDemo.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace MvvmLightDemo.Views
+namespace MVVMLightDemo.Views
 {
     public sealed partial class ShellPage : Page
     {
-        private ShellViewModel ViewModel { get { return DataContext as ShellViewModel; } }
+        private ShellViewModel ViewModel
+        {
+            get { return DataContext as ShellViewModel; }
+        }
 
         public ShellPage()
         {

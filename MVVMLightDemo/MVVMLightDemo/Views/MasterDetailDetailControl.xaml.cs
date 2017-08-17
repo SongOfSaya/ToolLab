@@ -1,9 +1,11 @@
-using MvvmLightDemo.Models;
+﻿using System;
+
+using MVVMLightDemo.Models;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmLightDemo.Views
+namespace MVVMLightDemo.Views
 {
     public sealed partial class MasterDetailDetailControl : UserControl
     {
@@ -13,7 +15,7 @@ namespace MvvmLightDemo.Views
             set { SetValue(MasterMenuItemProperty, value); }
         }
 
-        public static DependencyProperty MasterMenuItemProperty = DependencyProperty.Register("MasterMenuItem",typeof(Order),typeof(MasterDetailDetailControl),new PropertyMetadata(null));
+        public static readonly DependencyProperty MasterMenuItemProperty = DependencyProperty.Register("MasterMenuItem", typeof(Order), typeof(MasterDetailDetailControl), new PropertyMetadata(null));
 
         public MasterDetailDetailControl()
         {

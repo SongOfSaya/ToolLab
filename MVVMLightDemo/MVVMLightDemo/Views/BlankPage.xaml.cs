@@ -6,14 +6,14 @@ using Windows.UI.Xaml.Controls;
 
 namespace MVVMLightDemo.Views
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class BlankPage : Page
     {
-        private MainViewModel ViewModel
+        private BlankViewModel ViewModel
         {
-            get { return DataContext as MainViewModel; }
+            get { return DataContext as BlankViewModel; }
         }
 
-        public MainPage()
+        public BlankPage()
         {
             InitializeComponent();
         }

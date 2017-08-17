@@ -1,15 +1,18 @@
+﻿using System;
 using System.Threading.Tasks;
 
-namespace MvvmLightDemo.Activation
+namespace MVVMLightDemo.Activation
 {
-    //For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
+    // For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
     internal abstract class ActivationHandler
     {
         public abstract bool CanHandle(object args);
+
         public abstract Task HandleAsync(object args);
     }
 
-    internal abstract class ActivationHandler<T> : ActivationHandler where T : class
+    internal abstract class ActivationHandler<T> : ActivationHandler
+        where T : class
     {
         protected abstract Task HandleInternalAsync(T args);
 

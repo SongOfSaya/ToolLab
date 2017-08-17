@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,13 +7,13 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using MvvmLightDemo.Models;
-using MvvmLightDemo.Services;
+using MVVMLightDemo.Models;
+using MVVMLightDemo.Services;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MvvmLightDemo.ViewModels
+namespace MVVMLightDemo.ViewModels
 {
     public class MasterDetailViewModel : ViewModelBase
     {
@@ -25,12 +25,13 @@ namespace MvvmLightDemo.ViewModels
             }
         }
 
-        const string NarrowStateName = "NarrowState";
-        const string WideStateName = "WideState";
+        private const string NarrowStateName = "NarrowState";
+        private const string WideStateName = "WideState";
 
         private VisualState _currentState;
 
         private Order _selected;
+
         public Order Selected
         {
             get { return _selected; }
@@ -38,6 +39,7 @@ namespace MvvmLightDemo.ViewModels
         }
 
         public ICommand ItemClickCommand { get; private set; }
+
         public ICommand StateChangedCommand { get; private set; }
 
         public ObservableCollection<Order> SampleItems { get; private set; } = new ObservableCollection<Order>();
@@ -59,6 +61,7 @@ namespace MvvmLightDemo.ViewModels
             {
                 SampleItems.Add(item);
             }
+
             Selected = SampleItems.First();
         }
 
