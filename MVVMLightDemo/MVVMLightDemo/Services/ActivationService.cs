@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using MVVMLightDemo.Activation;
+using MvvmLightDemo.Activation;
 
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
@@ -11,15 +11,15 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace MVVMLightDemo.Services
+namespace MvvmLightDemo.Services
 {
-    // For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
+    //For more information on application activation see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/activation.md
     internal class ActivationService
     {
         private readonly App _app;
         private readonly UIElement _shell;
         private readonly Type _defaultNavItem;
-
+    
         private NavigationServiceEx NavigationService
         {
             get
@@ -27,6 +27,7 @@ namespace MVVMLightDemo.Services
                 return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
             }
         }
+        
 
         public ActivationService(App app, Type defaultNavItem, UIElement shell = null)
         {
@@ -41,7 +42,7 @@ namespace MVVMLightDemo.Services
             {
                 // Initialize things like registering background task before the app is loaded
                 await InitializeAsync();
-
+                
                 // Do not repeat app initialization when the Window already has content,
                 // just ensure that the window is active
                 if (Window.Current.Content == null)
@@ -106,7 +107,7 @@ namespace MVVMLightDemo.Services
 
         private void OnFrameNavigated(object sender, NavigationEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = NavigationService.CanGoBack ?
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = (NavigationService.CanGoBack) ? 
                 AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 

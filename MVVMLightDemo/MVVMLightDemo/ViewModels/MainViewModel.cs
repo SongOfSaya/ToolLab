@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 using GalaSoft.MvvmLight;
 
-namespace MVVMLightDemo.ViewModels
+namespace MvvmLightDemo.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {

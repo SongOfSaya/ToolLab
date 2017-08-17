@@ -1,10 +1,8 @@
-﻿using System;
-
-using MVVMLightDemo.ViewModels;
+using MvvmLightDemo.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 
-namespace MVVMLightDemo.Views
+namespace MvvmLightDemo.Views
 {
     public sealed partial class MainPage : Page
     {

@@ -1,12 +1,10 @@
-﻿using System;
-
-using MVVMLightDemo.Models;
-using MVVMLightDemo.ViewModels;
+using MvvmLightDemo.Models;
+using MvvmLightDemo.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace MVVMLightDemo.Views
+namespace MvvmLightDemo.Views
 {
     public sealed partial class MasterDetailDetailPage : Page
     {

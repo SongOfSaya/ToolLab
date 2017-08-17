@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,14 +6,13 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace MVVMLightDemo.Services
+namespace MvvmLightDemo.Services
 {
     public class NavigationServiceEx
     {
         private readonly Dictionary<string, Type> _pages = new Dictionary<string, Type>();
 
         private Frame _frame;
-
         public Frame Frame
         {
             get
@@ -25,7 +24,6 @@ namespace MVVMLightDemo.Services
 
                 return _frame;
             }
-
             set
             {
                 _frame = value;
@@ -33,11 +31,9 @@ namespace MVVMLightDemo.Services
         }
 
         public bool CanGoBack => Frame.CanGoBack;
-
         public bool CanGoForward => Frame.CanGoForward;
 
         public void GoBack() => Frame.GoBack();
-
         public void GoForward() => Frame.GoForward();
 
         public bool Navigate(string pageKey, object parameter = null, NavigationTransitionInfo infoOverride = null)
@@ -48,7 +44,6 @@ namespace MVVMLightDemo.Services
                 {
                     throw new ArgumentException($"Page not found: {pageKey}. Did you forget to call NavigationService.Configure?", "pageKey");
                 }
-
                 var navigationResult = Frame.Navigate(_pages[pageKey], parameter, infoOverride);
                 return navigationResult;
             }

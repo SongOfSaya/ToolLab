@@ -1,9 +1,9 @@
-﻿<Application
-    x:Class="MVVMLightDemo.App"
+<Application
+    x:Class="MvvmLightDemo.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vms="using:MVVMLightDemo.ViewModels"
-    >
+    xmlns:vms="using:MvvmLightDemo.ViewModels"
+    RequestedTheme="Light">
 
     <Application.Resources>
         <ResourceDictionary>

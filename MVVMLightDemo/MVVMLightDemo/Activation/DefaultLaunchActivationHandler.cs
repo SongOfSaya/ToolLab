@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 
-using MVVMLightDemo.Services;
+using MvvmLightDemo.Services;
 
 using Windows.ApplicationModel.Activation;
 
-namespace MVVMLightDemo.Activation
+namespace MvvmLightDemo.Activation
 {
     internal class DefaultLaunchActivationHandler : ActivationHandler<LaunchActivatedEventArgs>
     {
         private readonly string _navElement;
-
+    
         private NavigationServiceEx NavigationService
         {
             get
@@ -18,12 +18,12 @@ namespace MVVMLightDemo.Activation
                 return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
             }
         }
-
+    
         public DefaultLaunchActivationHandler(Type navElement)
         {
             _navElement = navElement.FullName;
         }
-
+    
         protected override async Task HandleInternalAsync(LaunchActivatedEventArgs args)
         {
             // When the navigation stack isn't restored navigate to the first page,

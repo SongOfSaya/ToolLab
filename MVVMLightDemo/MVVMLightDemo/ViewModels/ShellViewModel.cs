@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -8,15 +8,15 @@ using GalaSoft.MvvmLight.Command;
 
 using Microsoft.Practices.ServiceLocation;
 
-using MVVMLightDemo.Helpers;
-using MVVMLightDemo.Services;
-using MVVMLightDemo.Views;
+using MvvmLightDemo.Helpers;
+using MvvmLightDemo.Services;
+using MvvmLightDemo.Views;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace MVVMLightDemo.ViewModels
+namespace MvvmLightDemo.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
@@ -35,7 +35,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private bool _isPaneOpen;
-
         public bool IsPaneOpen
         {
             get { return _isPaneOpen; }
@@ -43,7 +42,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private SplitViewDisplayMode _displayMode = SplitViewDisplayMode.CompactInline;
-
         public SplitViewDisplayMode DisplayMode
         {
             get { return _displayMode; }
@@ -53,7 +51,6 @@ namespace MVVMLightDemo.ViewModels
         private object _lastSelectedItem;
 
         private ObservableCollection<ShellNavigationItem> _primaryItems = new ObservableCollection<ShellNavigationItem>();
-
         public ObservableCollection<ShellNavigationItem> PrimaryItems
         {
             get { return _primaryItems; }
@@ -61,7 +58,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private ObservableCollection<ShellNavigationItem> _secondaryItems = new ObservableCollection<ShellNavigationItem>();
-
         public ObservableCollection<ShellNavigationItem> SecondaryItems
         {
             get { return _secondaryItems; }
@@ -69,7 +65,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private ICommand _openPaneCommand;
-
         public ICommand OpenPaneCommand
         {
             get
@@ -84,7 +79,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private ICommand _itemSelected;
-
         public ICommand ItemSelectedCommand
         {
             get
@@ -99,7 +93,6 @@ namespace MVVMLightDemo.ViewModels
         }
 
         private ICommand _stateChangedCommand;
-
         public ICommand StateChangedCommand
         {
             get
@@ -168,8 +161,8 @@ namespace MVVMLightDemo.ViewModels
             // Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             // Edit String/en-US/Resources.resw: Add a menu item title for each page
             _primaryItems.Add(new ShellNavigationItem("Shell_Main".GetLocalized(), Symbol.Document, typeof(MainViewModel).FullName));
-            _primaryItems.Add(new ShellNavigationItem("Shell_Blank".GetLocalized(), Symbol.Document, typeof(BlankViewModel).FullName));
             _primaryItems.Add(new ShellNavigationItem("Shell_MasterDetail".GetLocalized(), Symbol.Document, typeof(MasterDetailViewModel).FullName));
+            _primaryItems.Add(new ShellNavigationItem("Shell_Tabbed".GetLocalized(), Symbol.Document, typeof(TabbedViewModel).FullName));
         }
 
         private void ItemSelected(ItemClickEventArgs args)
@@ -178,7 +171,6 @@ namespace MVVMLightDemo.ViewModels
             {
                 IsPaneOpen = false;
             }
-
             Navigate(args.ClickedItem);
         }
 
@@ -207,7 +199,6 @@ namespace MVVMLightDemo.ViewModels
             {
                 (oldValue as ShellNavigationItem).IsSelected = false;
             }
-
             if (newValue != null)
             {
                 (newValue as ShellNavigationItem).IsSelected = true;

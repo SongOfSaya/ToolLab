@@ -1,5 +1,3 @@
-﻿using System;
-
 using GalaSoft.MvvmLight;
 
 using Windows.UI.Xaml;
@@ -7,32 +5,35 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
-namespace MVVMLightDemo.ViewModels
+namespace MvvmLightDemo.ViewModels
 {
     public class ShellNavigationItem : ViewModelBase
     {
-        public string Label { get; set; }
-
-        public Symbol Symbol { get; set; }
-
-        public string ViewModelName { get; set; }
+        private bool _isSelected;
 
         private Visibility _selectedVis = Visibility.Collapsed;
-
         public Visibility SelectedVis
         {
             get { return _selectedVis; }
-
             set { Set(ref _selectedVis, value); }
         }
 
-        public char SymbolAsChar
+        private SolidColorBrush _selectedForeground = null;
+        public SolidColorBrush SelectedForeground
         {
-            get { return (char)Symbol; }
+            get
+            {
+                return _selectedForeground ?? (_selectedForeground = GetStandardTextColorBrush());
+            }
+            set { Set(ref _selectedForeground, value); }
         }
 
-        private IconElement _iconElement = null;
+        public string Label { get; set; }
+        public Symbol Symbol { get; set; }
+        public char SymbolAsChar { get { return (char)Symbol; } }
+        public string ViewModelName { get; set; }
 
+        private IconElement _iconElement = null;
         public IconElement Icon
         {
             get
@@ -42,7 +43,7 @@ namespace MVVMLightDemo.ViewModels
                     Source = this,
                     Path = new PropertyPath("SelectedForeground"),
                     Mode = BindingMode.OneWay,
-                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
                 };
 
                 if (_iconElement != null)
@@ -60,64 +61,38 @@ namespace MVVMLightDemo.ViewModels
             }
         }
 
-        private bool _isSelected;
-
         public bool IsSelected
         {
-            get
-            {
-                return _isSelected;
-            }
-
+            get { return _isSelected; }
             set
             {
                 Set(ref _isSelected, value);
-
                 SelectedVis = value ? Visibility.Visible : Visibility.Collapsed;
-
-                SelectedForeground = IsSelected
-                    ? Application.Current.Resources["ThemeControlForegroundBaseHighBrush"] as SolidColorBrush
+                SelectedForeground = value
+                    ? Application.Current.Resources["SystemControlForegroundAccentBrush"] as SolidColorBrush
                     : GetStandardTextColorBrush();
             }
         }
 
-        private SolidColorBrush _selectedForeground = null;
-
-        public SolidColorBrush SelectedForeground
-        {
-            get { return _selectedForeground ?? (_selectedForeground = GetStandardTextColorBrush()); }
-
-            set { Set(ref _selectedForeground, value); }
-        }
-
-        public ShellNavigationItem(string label, Symbol symbol, string viewModelName)
-            : this(label, viewModelName)
-        {
-            Symbol = symbol;
-        }
-
-        public ShellNavigationItem(string label, IconElement icon, string viewModelName)
-            : this(label, viewModelName)
-        {
-            _iconElement = icon;
-        }
-
-        public ShellNavigationItem(string label, string viewModelName)
-        {
-            Label = label;
-            ViewModelName = viewModelName;
-        }
-
         private SolidColorBrush GetStandardTextColorBrush()
         {
-            var brush = Application.Current.Resources["ThemeControlForegroundBaseHighBrush"] as SolidColorBrush;
+            var brush = Application.Current.Resources["SystemControlForegroundBaseHighBrush"] as SolidColorBrush;
 
             return brush;
         }
 
-        public override string ToString()
+        public ShellNavigationItem(string label, Symbol symbol, string viewModelName)
         {
-            return Label;
+            this.Label = label;
+            this.Symbol = symbol;
+            this.ViewModelName = viewModelName;
+        }
+
+        public ShellNavigationItem(string label, IconElement icon, string viewModelName)
+        {
+            this.Label = label;
+            this._iconElement = icon;
+            this.ViewModelName = viewModelName;
         }
     }
 }

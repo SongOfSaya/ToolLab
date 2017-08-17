@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 
-namespace MVVMLightDemo.Helpers
+namespace MvvmLightDemo.Helpers
 {
-    internal static class Singleton<T>
-        where T : new()
+    internal static class Singleton<T> where T : new()
     {
         private static ConcurrentDictionary<Type, T> _instances = new ConcurrentDictionary<Type, T>();
 

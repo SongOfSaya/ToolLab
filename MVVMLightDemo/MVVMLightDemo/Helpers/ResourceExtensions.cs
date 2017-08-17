@@ -1,9 +1,8 @@
-﻿using System;
 using System.Runtime.InteropServices;
 
 using Windows.ApplicationModel.Resources;
 
-namespace MVVMLightDemo.Helpers
+namespace MvvmLightDemo.Helpers
 {
     internal static class ResourceExtensions
     {

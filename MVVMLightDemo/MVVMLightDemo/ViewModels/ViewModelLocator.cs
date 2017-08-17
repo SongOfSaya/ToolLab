@@ -1,17 +1,15 @@
-﻿using System;
-
 using GalaSoft.MvvmLight.Ioc;
 
 using Microsoft.Practices.ServiceLocation;
 
-using MVVMLightDemo.Services;
-using MVVMLightDemo.Views;
+using MvvmLightDemo.Services;
+using MvvmLightDemo.Views;
 
-namespace MVVMLightDemo.ViewModels
+namespace MvvmLightDemo.ViewModels
 {
     public class ViewModelLocator
     {
-        private NavigationServiceEx _navigationService = new NavigationServiceEx();
+        NavigationServiceEx _navigationService = new NavigationServiceEx();
 
         public ViewModelLocator()
         {
@@ -20,26 +18,25 @@ namespace MVVMLightDemo.ViewModels
             SimpleIoc.Default.Register(() => _navigationService);
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<MainViewModel, MainPage>();
-            Register<BlankViewModel, BlankPage>();
             Register<MasterDetailViewModel, MasterDetailPage>();
             Register<MasterDetailDetailViewModel, MasterDetailDetailPage>();
+            Register<TabbedViewModel, TabbedPage>();
         }
+
+        public TabbedViewModel TabbedViewModel => ServiceLocator.Current.GetInstance<TabbedViewModel>();
 
         public MasterDetailDetailViewModel MasterDetailDetailViewModel => ServiceLocator.Current.GetInstance<MasterDetailDetailViewModel>();
 
         public MasterDetailViewModel MasterDetailViewModel => ServiceLocator.Current.GetInstance<MasterDetailViewModel>();
 
-        public BlankViewModel BlankViewModel => ServiceLocator.Current.GetInstance<BlankViewModel>();
-
         public MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 
-        public void Register<VM, V>()
-            where VM : class
+        public void Register<VM, V>() where VM : class
         {
             SimpleIoc.Default.Register<VM>();
-
+            
             _navigationService.Configure(typeof(VM).FullName, typeof(V));
         }
     }
